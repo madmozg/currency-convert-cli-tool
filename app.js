@@ -45,7 +45,14 @@ app.get('/:amount/:from/:to', bruteforce.prevent, (req, res) => {
     
 })
 
-app.listen(port);
-if(process.env.SSL === 1) {
-    https.createServer(options, app).listen(sslport);
-}
+// Starting both http & https servers
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(options, app);
+
+httpServer.listen(80, () => {
+        console.log('HTTP Server running on port 80');
+});
+
+httpsServer.listen(443, () => {
+        console.log('HTTPS Server running on port 443');
+});
