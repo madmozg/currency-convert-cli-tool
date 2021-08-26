@@ -49,10 +49,10 @@ app.get('/:amount/:from/:to', bruteforce.prevent, (req, res) => {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(options, app);
 
-httpServer.listen(80, () => {
+httpServer.listen(port, () => {
         console.log('HTTP Server running on port 80');
 });
 
-httpsServer.listen(443, () => {
+httpsServer.listen(sslport, () => {
         console.log('HTTPS Server running on port 443');
 });
