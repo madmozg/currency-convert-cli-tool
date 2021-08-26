@@ -15,7 +15,7 @@ APP_SSL_PORT=443
 API_URL=<api_endpoint>
 DEVELOPER=1
 SSL=1
-SSL_DIR=/etc/letsencrypt/live/cli.mconvert.net/
+SSL_DIR=/etc/letsencrypt/live/<project_name>
 ```
 
 * DEVELOPER: mode will allow you to avoid certificates issues locally
