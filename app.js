@@ -18,7 +18,7 @@ const sslport = process.env.APP_SSL_PORT;
 
 // SSL Config
 if(process.env.SSL == 1) {
-    const options = {
+    options = {
         cert: fs.readFileSync(process.env.SSL_DIR + 'fullchain.pem'),
         key: fs.readFileSync(process.env.SSL_DIR + 'privkey.pem')
     }
