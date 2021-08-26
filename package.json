@@ -1,0 +1,29 @@
+{
+  "name": "mconvert_cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js -e ejs,js,css,html,jpg,png,scss"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/madmozg/mconvert-cli.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/madmozg/mconvert-cli/issues"
+  },
+  "homepage": "https://github.com/madmozg/mconvert-cli#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "cli-color": "^2.0.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-brute": "^1.0.1",
+    "https": "^1.0.0",
+    "nodemon": "^2.0.12"
+  }
+}
