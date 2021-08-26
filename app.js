@@ -2,6 +2,8 @@ const express = require('express')
 const axios = require('axios')
 const clc = require("cli-color")
 const https = require('https')
+const fs = require('fs');
+
 var ExpressBrute = require('express-brute');
 var store = new ExpressBrute.MemoryStore(); // stores state locally, don't use this in production
 var bruteforce = new ExpressBrute(store);
@@ -11,6 +13,15 @@ require('dotenv').config()
 // Defining app
 const app = express()
 const port = process.env.APP_PORT;
+const sslport = process.env.APP_SSL_PORT;
+
+// SSL Config
+if(process.env.SSL === 1) {
+    const options = {
+        cert: fs.readFileSync(process.env.SSL_DIR + 'fullchain.pem'),
+        key: fs.readFileSync(process.env.SSL_DIR + 'privkey.pem')
+    }
+}
 
 app.get('/:amount/:from/:to', bruteforce.prevent, (req, res) => {
     data = req.params
@@ -34,6 +45,7 @@ app.get('/:amount/:from/:to', bruteforce.prevent, (req, res) => {
     
 })
 
-app.listen(port,() => {
-    console.log(`Example app listening at http://localhost:${port}`)
-})
+app.listen(port);
+if(process.env.SSL === 1) {
+    https.createServer(options, app).listen(sslport);
+}
